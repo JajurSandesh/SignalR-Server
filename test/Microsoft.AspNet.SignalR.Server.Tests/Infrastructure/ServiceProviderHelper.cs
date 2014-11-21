@@ -22,10 +22,8 @@ namespace Microsoft.AspNet.SignalR.Tests
 
         public static IServiceProvider CreateServiceProvider(Action<IServiceCollection> configure)
         {
-            var collection = new ServiceCollection()
-                .Import(CallContextServiceLocator.Locator.ServiceProvider)
+            var collection = HostingServices.Create()
                 .Add(OptionsServices.GetDefaultServices())
-                .Add(HostingServices.GetDefaultServices())
                 .Add(DataProtectionServices.GetDefaultServices())
                 .Add(SignalRServices.GetDefaultServices());
 
