@@ -17,7 +17,7 @@ namespace Microsoft.Framework.DependencyInjection
         public static IServiceCollection AddSignalR(this IServiceCollection services, IConfiguration configuration, Action<SignalROptions> configureOptions = null)
         {
             services.AddOptions();
-            services.Add(SignalRServices.GetDefaultServices(configuration));
+            services.TryAdd(SignalRServices.GetDefaultServices(configuration));
             if (configuration != null)
             {
                 services.Configure<SignalROptions>(configuration);
